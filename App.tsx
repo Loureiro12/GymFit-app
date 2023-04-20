@@ -1,7 +1,5 @@
-import Home from './src';
+import Home from './src'
 
 export default function App() {
-  return (
-    <Home/>
-  );
+  return <Home />
 }
