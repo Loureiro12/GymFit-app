@@ -9,12 +9,14 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/poppins": "^0.2.3",
     "@expo/html-elements": "latest",
     "@gluestack-style/react": "latest",
     "@gluestack-ui/config": "latest",
     "@gluestack-ui/themed": "latest",
     "@legendapp/motion": "latest",
     "expo": "~48.0.17",
+    "expo-font": "~11.1.1",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
