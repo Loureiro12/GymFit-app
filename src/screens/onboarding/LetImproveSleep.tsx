@@ -1,11 +1,11 @@
 import { StatusBar } from "react-native";
 import { Heading, Text, VStack, Image, ScrollView } from "@gluestack-ui/themed";
 
-import BackgroundImg from "@assets/onboarding/Frame.png";
+import BackgroundImg from "@assets/onboarding/Frame4.png";
 
 import { ProgressButton } from "@components/ProgressButton";
 
-export function TrackYourGoal() {
+export function LetImproveSleep() {
   function handleNext() {}
 
   return (
@@ -39,12 +39,11 @@ export function TrackYourGoal() {
             alignContent="space-between"
           >
             <Heading fontSize={"$2xl"} color="$black100">
-              Acompanhe seu objetivo
+              Vamos melhorar o sono
             </Heading>
             <Text fontSize={"$sm"} mt={10} color="$black200" lineHeight={"$md"}>
-              Não se preocupe se você tiver problemas para determinar seus
-              objetivos, podemos ajudá-lo a determinar seus objetivos e
-              acompanhar seus objetivos
+              Melhore a qualidade do seu sono connosco, um sono de boa qualidade
+              pode trazer bom humor pela manhã
             </Text>
             <VStack alignItems="flex-end" marginBottom={40}>
               <ProgressButton onPress={() => {}} />

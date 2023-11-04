@@ -1,11 +1,11 @@
 import { StatusBar } from "react-native";
 import { Heading, Text, VStack, Image, ScrollView } from "@gluestack-ui/themed";
 
-import BackgroundImg from "@assets/onboarding/Frame.png";
+import BackgroundImg from "@assets/onboarding/Frame3.png";
 
 import { ProgressButton } from "@components/ProgressButton";
 
-export function TrackYourGoal() {
+export function EatWell() {
   function handleNext() {}
 
   return (
@@ -39,12 +39,12 @@ export function TrackYourGoal() {
             alignContent="space-between"
           >
             <Heading fontSize={"$2xl"} color="$black100">
-              Acompanhe seu objetivo
+              Comer bem
             </Heading>
             <Text fontSize={"$sm"} mt={10} color="$black200" lineHeight={"$md"}>
-              Não se preocupe se você tiver problemas para determinar seus
-              objetivos, podemos ajudá-lo a determinar seus objetivos e
-              acompanhar seus objetivos
+              Vamos começar um estilo de vida saudável conosco, podemos
+              determinar sua dieta todos os dias. alimentação saudável é
+              divertido
             </Text>
             <VStack alignItems="flex-end" marginBottom={40}>
               <ProgressButton onPress={() => {}} />
