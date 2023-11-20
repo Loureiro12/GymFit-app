@@ -9,9 +9,7 @@ import {
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
 
-import { BurnCalories } from "@screens/onboarding/BurnCalories";
-import { EatWell } from "@screens/onboarding/EatWell";
-import { LetImproveSleep } from "@screens/onboarding/LetImproveSleep";
+import { InitialOnboarding } from "@screens/onboarding/InitialOnboarding";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,7 +22,7 @@ export default function App() {
   return (
     <GluestackUIProvider config={config}>
       <Box flex={1}>
-        <LetImproveSleep />
+        <InitialOnboarding />
       </Box>
     </GluestackUIProvider>
   );
