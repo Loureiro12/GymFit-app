@@ -1,5 +1,5 @@
 
-import { Icon, Button, ChevronRightIcon, IButtonProps  } from "@gluestack-ui/themed";
+import { Icon, Button, ChevronRightIcon } from "@gluestack-ui/themed";
 
 type Props = {
  onPress: () => void
