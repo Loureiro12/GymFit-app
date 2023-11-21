@@ -9,7 +9,7 @@ import {
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
 
-import { InitialOnboarding } from "@screens/onboarding/InitialOnboarding";
+import { Routes } from "@routes/index";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -22,7 +22,7 @@ export default function App() {
   return (
     <GluestackUIProvider config={config}>
       <Box flex={1}>
-        <InitialOnboarding />
+        <Routes />
       </Box>
     </GluestackUIProvider>
   );

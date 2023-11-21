@@ -4,9 +4,15 @@ import { Heading, Text, VStack, Image, ScrollView } from "@gluestack-ui/themed";
 import BackgroundImg from "@assets/onboarding/Frame.png";
 
 import { ProgressButton } from "@components/ProgressButton";
+import { useNavigation } from "@react-navigation/native";
+import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 
 export function TrackYourGoal() {
-  function handleNext() {}
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
+  function handleNext() {
+    navigation.navigate("BurnCalories");
+  }
 
   return (
     <>
@@ -47,7 +53,7 @@ export function TrackYourGoal() {
               acompanhar seus objetivos
             </Text>
             <VStack alignItems="flex-end" marginBottom={40}>
-              <ProgressButton onPress={() => {}} />
+              <ProgressButton onPress={handleNext} />
             </VStack>
           </VStack>
 

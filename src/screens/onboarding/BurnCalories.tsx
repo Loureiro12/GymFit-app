@@ -1,12 +1,18 @@
 import { StatusBar } from "react-native";
 import { Heading, Text, VStack, Image, ScrollView } from "@gluestack-ui/themed";
+import { useNavigation } from "@react-navigation/native";
 
 import BackgroundImg from "@assets/onboarding/Frame2.png";
 
 import { ProgressButton } from "@components/ProgressButton";
+import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 
 export function BurnCalories() {
-  function handleNext() {}
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
+  function handleNext() {
+    navigation.navigate("EatWell");
+  }
 
   return (
     <>
@@ -46,7 +52,7 @@ export function BurnCalories() {
               começo doí depois vem o resultado.
             </Text>
             <VStack alignItems="flex-end" marginBottom={40}>
-              <ProgressButton onPress={() => {}} />
+              <ProgressButton onPress={handleNext} />
             </VStack>
           </VStack>
 
