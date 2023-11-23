@@ -9,7 +9,13 @@ import {
   ButtonText,
   HStack,
   Box,
+  CheckboxLabel,
+  Checkbox,
+  CheckboxIndicator,
+  CheckboxIcon,
+  CheckIcon,
 } from "@gluestack-ui/themed";
+import { User } from "lucide-react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import Facebook from "@assets/svgs/facebook.svg";
@@ -19,8 +25,12 @@ import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 
-export function SignIn() {
+export function SignUp() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
+  function handleNext() {
+    navigation.navigate("EatWell");
+  }
 
   return (
     <>
@@ -45,23 +55,33 @@ export function SignIn() {
               Olá,
             </Text>
             <Heading fontSize={"$xl"} fontWeight="$bold" marginBottom={46}>
-              Bem-vindo!
+              Crie sua conta!
             </Heading>
+            <Input placeholder="Primeiro nome" icon={User} mb={15} />
+            <Input placeholder="Ultimo nome" icon={User} mb={15} />
             <Input placeholder="Email" icon={MailIcon} mb={15} />
             <Input placeholder="Senha" icon={LockIcon} />
 
-            <ButtonText
-              marginTop={10}
-              color="#ADA4A5"
-              fontSize={"$sm"}
-              textDecorationLine="underline"
-            >
-              Esqueceu sua senha?
-            </ButtonText>
+            <Box mt={20}>
+              <Checkbox
+                size="md"
+                isInvalid={false}
+                isDisabled={false}
+                value={""}
+                aria-label="Aceitar termos de uso e política de privacidade"
+              >
+                <CheckboxIndicator mr={10}>
+                  <CheckboxIcon as={CheckIcon} />
+                </CheckboxIndicator>
+                <CheckboxLabel fontSize={"$xs"} textAlign="justify">
+                  Aceitar a Política de Privacidade e Termos de Uso.
+                </CheckboxLabel>
+              </Checkbox>
+            </Box>
           </VStack>
 
           <VStack alignItems="center">
-            <Button title="Entrar" />
+            <Button title="Cadastrar" />
 
             <HStack alignItems="center" marginBottom={30} marginTop={30}>
               <Box width={"40%"} height={1} bgColor="#DDDADA" />
@@ -108,9 +128,9 @@ export function SignIn() {
               fontWeight="$normal"
               fontSize={"$sm"}
               color="$black100"
-              onPress={() => navigation.navigate("SignUp")}
+              onPress={() => navigation.navigate("SignIn")}
             >
-              Não tem uma conta ainda? Registre-se
+              já tem uma conta? Conecte-se
             </ButtonText>
           </VStack>
         </VStack>
