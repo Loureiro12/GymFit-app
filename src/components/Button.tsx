@@ -16,6 +16,7 @@ export function Button({ title, variant = "solid", loading, ...rest }: Props) {
   return (
     <ButtonNativeBase
       h={60}
+      width={"$full"}
       rounded={"$full"}
       bg={variant === "solid" ? "$yellow10" : "$white"}
       {...rest}
