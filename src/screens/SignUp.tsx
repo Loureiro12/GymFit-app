@@ -35,7 +35,7 @@ export function SignUp() {
   return (
     <>
       <StatusBar
-        backgroundColor="#FFD600"
+        backgroundColor="white"
         barStyle={"dark-content"}
         translucent
       />
