@@ -81,7 +81,10 @@ export function SignUp() {
           </VStack>
 
           <VStack alignItems="center">
-            <Button title="Cadastrar" />
+            <Button
+              title="Cadastrar"
+              onPress={() => navigation.navigate("SelectUserType")}
+            />
 
             <HStack alignItems="center" marginBottom={30} marginTop={30}>
               <Box width={"40%"} height={1} bgColor="#DDDADA" />

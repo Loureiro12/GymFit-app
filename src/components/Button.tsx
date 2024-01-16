@@ -6,10 +6,28 @@ import {
 
 import { ComponentProps } from "react";
 
+type VariantePros = "solid" | "outline" | 'black'
+
 export interface Props extends ComponentProps<typeof ButtonNativeBase> {
   title: string;
-  variant?: "solid" | "outline";
+  variant?: VariantePros
   loading?: boolean;
+}
+
+const buttonColorVariation: {
+  [key in VariantePros]: string
+} = {
+  solid: '$yellow10',
+  outline: "$white",
+  black: '$black100',
+}
+
+const buttonTextColorVariation: {
+  [key in VariantePros]: string
+} = {
+  solid: '$white',
+  outline: "$yellow10",
+  black: '$white',
 }
 
 export function Button({ title, variant = "solid", loading, ...rest }: Props) {
@@ -18,19 +36,19 @@ export function Button({ title, variant = "solid", loading, ...rest }: Props) {
       h={60}
       width={"$full"}
       rounded={"$full"}
-      bg={variant === "solid" ? "$yellow10" : "$white"}
+      bg={buttonColorVariation[variant]}
       {...rest}
     >
       {loading && (
         <ButtonSpinner
           mr="$5"
-          color={variant === "solid" ? "$white" : "$yellow10"}
+          color={buttonTextColorVariation[variant]}
         />
       )}
       <ButtonText
         fontSize={"$md"}
         fontWeight="$bold"
-        color={variant === "solid" ? "$white" : "$yellow10"}
+        color={buttonTextColorVariation[variant]}
       >
         {loading ? "Carregando..." : title}
       </ButtonText>
