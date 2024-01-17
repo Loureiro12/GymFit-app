@@ -2,6 +2,7 @@ import {
   NativeStackNavigationProp,
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
+import { CompleteUserInformation } from "@screens/CompleteUserInformation";
 
 import { BurnCalories } from "@screens/onboarding/BurnCalories";
 import { EatWell } from "@screens/onboarding/EatWell";
@@ -21,6 +22,7 @@ type AuthRoutes = {
   SignIn: undefined;
   SignUp: undefined;
   SelectUserType: undefined;
+  CompleteUserInformation: undefined;
 };
 
 export type AuthNavigatorRoutesProps = NativeStackNavigationProp<AuthRoutes>;
@@ -31,7 +33,7 @@ export function AuthRoutes() {
   return (
     <Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="InitialOnboarding"
+      initialRouteName="CompleteUserInformation"
     >
       <Screen name="InitialOnboarding" component={InitialOnboarding} />
       <Screen name="BurnCalories" component={BurnCalories} />
@@ -41,6 +43,10 @@ export function AuthRoutes() {
       <Screen name="SignIn" component={SignIn} />
       <Screen name="SignUp" component={SignUp} />
       <Screen name="SelectUserType" component={SelectUserType} />
+      <Screen
+        name="CompleteUserInformation"
+        component={CompleteUserInformation}
+      />
     </Navigator>
   );
 }

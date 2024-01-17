@@ -18,6 +18,10 @@ import { Button } from "@components/Button";
 export function SelectUserType() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
+  const handleButton = () => {
+    navigation.navigate("CompleteUserInformation");
+  };
+
   return (
     <>
       <StatusBar
@@ -31,13 +35,18 @@ export function SelectUserType() {
           color="$black100"
           fontSize={"$3xl"}
           fontWeight="$bold"
-          lineHeight={'$2xl'}
-          marginBottom={'$10'}
+          lineHeight={"$2xl"}
+          marginBottom={"$10"}
         >
           Você quer se cadastrar como aluno ou treinador?
         </Text>
-        <Button title="Treinador" variant="black" marginBottom={'$5'}/>
-        <Button title="Aluno" variant="black" />
+        <Button
+          title="Treinador"
+          variant="black"
+          marginBottom={"$5"}
+          onPress={handleButton}
+        />
+        <Button title="Aluno" variant="black" onPress={handleButton} />
       </VStack>
     </>
   );
