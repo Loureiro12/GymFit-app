@@ -15,18 +15,24 @@ export interface Props extends ComponentProps<typeof NativeBaseInput> {
   placeholder: string;
   icon?: any;
   mb?: number;
+  width?: string;
 }
 
 export function Input({
   errorMensagem = null,
   placeholder,
+  width,
   error,
   icon,
   mb,
   ...rest
 }: Props) {
   return (
-    <FormControl width={"$full"} marginBottom={mb} isInvalid={error}>
+    <FormControl
+      width={width ? width : "$full"}
+      marginBottom={mb}
+      isInvalid={error}
+    >
       <NativeBaseInput
         height={58}
         width={"$full"}

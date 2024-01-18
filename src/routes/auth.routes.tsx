@@ -33,7 +33,7 @@ export function AuthRoutes() {
   return (
     <Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="CompleteUserInformation"
+      initialRouteName="SignUp"
     >
       <Screen name="InitialOnboarding" component={InitialOnboarding} />
       <Screen name="BurnCalories" component={BurnCalories} />

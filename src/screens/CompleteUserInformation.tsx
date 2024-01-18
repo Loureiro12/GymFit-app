@@ -1,11 +1,5 @@
 import { StatusBar } from "react-native";
-import {
-  VStack,
-  ScrollView,
-  Image,
-  Text,
-  LockIcon,
-} from "@gluestack-ui/themed";
+import { VStack, ScrollView, Image, Text, HStack } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
 
 import CompleteUserInformationImg from "@assets/CompleteUserInformationImg.png";
@@ -13,7 +7,8 @@ import CompleteUserInformationImg from "@assets/CompleteUserInformationImg.png";
 import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 import { Select } from "@components/Select";
 import { Input } from "@components/Input";
-import { CalendarDays, Users } from "lucide-react-native";
+import { CalendarDays, Ruler, Users, Weight } from "lucide-react-native";
+import { Button } from "@components/Button";
 
 const selectOption = [
   { label: "Masculino", value: "masculino" },
@@ -54,7 +49,7 @@ export function CompleteUserInformation() {
             />
           </VStack>
 
-          <VStack>
+          <VStack marginBottom={"$7"} alignItems="center">
             <Text fontSize={"$xl"} fontWeight="bold" color="$black100">
               Vamos completar seu perfil
             </Text>
@@ -69,7 +64,54 @@ export function CompleteUserInformation() {
             icon={Users}
           />
 
-          <Input placeholder="Data de aniversário" icon={CalendarDays} />
+          <Input
+            placeholder="Data de aniversário"
+            icon={CalendarDays}
+            marginBottom={"$3.5"}
+            marginTop={"$3.5"}
+          />
+
+          <HStack
+            width={"$full"}
+            justifyContent="space-between"
+            marginBottom={"$3.5"}
+          >
+            <Input placeholder="Seu peso" icon={Weight} width={"$5/6"} />
+            <VStack
+              bg="$black100"
+              height={58}
+              width={48}
+              borderRadius={14}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Text color="$white" fontSize={"$xs"} fontWeight="$bold">
+                KG
+              </Text>
+            </VStack>
+          </HStack>
+
+          <HStack
+            width={"$full"}
+            justifyContent="space-between"
+            marginBottom={"$7"}
+          >
+            <Input placeholder="Sua altura" icon={Ruler} width={"$5/6"} />
+            <VStack
+              bg="$black100"
+              height={58}
+              width={48}
+              borderRadius={14}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Text color="$white" fontSize={"$xs"} fontWeight="$bold">
+                CM
+              </Text>
+            </VStack>
+          </HStack>
+
+          <Button title="Continuar" />
         </VStack>
       </ScrollView>
     </>
