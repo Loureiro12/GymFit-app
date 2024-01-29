@@ -1,4 +1,4 @@
-import { StatusBar } from "react-native";
+import { StatusBar, TouchableOpacity } from "react-native";
 import { Heading, Text, VStack, Image, ScrollView } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
 
@@ -9,9 +9,9 @@ import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 
 export function LetImproveSleep() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
-  
+
   function handleNext() {
-    navigation.navigate('SignIn')
+    navigation.navigate("SignIn");
   }
 
   return (
@@ -51,7 +51,18 @@ export function LetImproveSleep() {
               Melhore a qualidade do seu sono connosco, um sono de boa qualidade
               pode trazer bom humor pela manhã
             </Text>
-            <VStack alignItems="flex-end" marginBottom={40}>
+            <VStack
+              alignItems="flex-end"
+              flexDirection="row"
+              justifyContent="space-between"
+              marginBottom={40}
+            >
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => navigation.navigate("SignIn")}
+              >
+                <Text color="$warmGray400">Pular</Text>
+              </TouchableOpacity>
               <ProgressButton onPress={handleNext} />
             </VStack>
           </VStack>

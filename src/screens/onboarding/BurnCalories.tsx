@@ -1,4 +1,4 @@
-import { StatusBar } from "react-native";
+import { StatusBar, TouchableOpacity } from "react-native";
 import { Heading, Text, VStack, Image, ScrollView } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
 
@@ -51,7 +51,18 @@ export function BurnCalories() {
               Vamos continuar queimando, para alcançar seus objetivos, apenas no
               começo doí depois vem o resultado.
             </Text>
-            <VStack alignItems="flex-end" marginBottom={40}>
+            <VStack
+              alignItems="flex-end"
+              flexDirection="row"
+              justifyContent="space-between"
+              marginBottom={40}
+            >
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => navigation.navigate("SignIn")}
+              >
+                <Text color="$warmGray400">Pular</Text>
+              </TouchableOpacity>
               <ProgressButton onPress={handleNext} />
             </VStack>
           </VStack>
