@@ -5,13 +5,24 @@ import { useNavigation } from "@react-navigation/native";
 import Logo from "@assets/logo.png";
 import { Button } from "@components/Button";
 import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ONBOARDING_COMPLETED } from "@storage/storageConfig";
+import { useEffect } from "react";
 
 export function InitialOnboarding() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
   
-  function handleNext() {
+  async function handleNext() {
+    const onboardingSituation = await AsyncStorage.getItem(ONBOARDING_COMPLETED)
+
+    if (onboardingSituation) {
+      navigation.navigate('SignIn')
+      return
+    }
     navigation.navigate('TrackYourGoal')
   }
+
 
   return (
     <>
