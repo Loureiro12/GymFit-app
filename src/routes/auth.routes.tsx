@@ -9,6 +9,7 @@ import { EatWell } from "@screens/onboarding/EatWell";
 import { InitialOnboarding } from "@screens/onboarding/InitialOnboarding";
 import { LetImproveSleep } from "@screens/onboarding/LetImproveSleep";
 import { TrackYourGoal } from "@screens/onboarding/TrackYourGoal";
+import { SelectGoal } from "@screens/SelectGoal";
 import { SelectUserType } from "@screens/SelectUserType";
 import { SignIn } from "@screens/SignIn";
 import { SignUp } from "@screens/SignUp";
@@ -23,6 +24,7 @@ type AuthRoutes = {
   SignUp: undefined;
   SelectUserType: undefined;
   CompleteUserInformation: undefined;
+  SelectGoal: undefined
 };
 
 export type AuthNavigatorRoutesProps = NativeStackNavigationProp<AuthRoutes>;
@@ -46,6 +48,10 @@ export function AuthRoutes() {
       <Screen
         name="CompleteUserInformation"
         component={CompleteUserInformation}
+      />
+       <Screen
+        name="SelectGoal"
+        component={SelectGoal}
       />
     </Navigator>
   );

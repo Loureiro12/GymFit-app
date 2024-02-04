@@ -12,6 +12,7 @@ export interface Props extends ComponentProps<typeof ButtonNativeBase> {
   title: string;
   variant?: VariantePros
   loading?: boolean;
+  disabled?: boolean;
 }
 
 const buttonColorVariation: {
@@ -30,13 +31,15 @@ const buttonTextColorVariation: {
   black: '$white',
 }
 
-export function Button({ title, variant = "solid", loading, ...rest }: Props) {
+export function Button({ title, variant = "solid", loading,disabled, ...rest }: Props) {
   return (
     <ButtonNativeBase
       h={60}
       width={"$full"}
       rounded={"$full"}
+      disabled={disabled}
       bg={buttonColorVariation[variant]}
+      opacity={disabled ? 0.4 : 1}
       {...rest}
     >
       {loading && (

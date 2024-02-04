@@ -19,6 +19,10 @@ const selectOption = [
 export function CompleteUserInformation() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
+  const handleSubmit = () => {
+    navigation.navigate('SelectGoal')
+  }
+
   return (
     <>
       <StatusBar
@@ -111,7 +115,7 @@ export function CompleteUserInformation() {
             </VStack>
           </HStack>
 
-          <Button title="Continuar" />
+          <Button title="Continuar" onPress={handleSubmit}/>
         </VStack>
       </ScrollView>
     </>

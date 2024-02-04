@@ -7,7 +7,6 @@ import { Button } from "@components/Button";
 import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ONBOARDING_COMPLETED } from "@storage/storageConfig";
-import { useEffect } from "react";
 
 export function InitialOnboarding() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();

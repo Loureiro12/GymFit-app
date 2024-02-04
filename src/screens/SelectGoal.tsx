@@ -1,22 +1,40 @@
-import { StatusBar } from "react-native";
-import { VStack, ScrollView, Image, Text, HStack } from "@gluestack-ui/themed";
+import { FlatList, StatusBar } from "react-native";
+import { VStack, Text, ScrollView } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
 
-import CompleteUserInformationImg from "@assets/CompleteUserInformationImg.png";
-
 import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
-import { Select } from "@components/Select";
-import { Input } from "@components/Input";
-import { CalendarDays, Ruler, Users, Weight } from "lucide-react-native";
 import { Button } from "@components/Button";
+import { CarouselCardWithImage } from "@components/CarouselCardWithImage";
+
+import Hypertrophy from "@assets/goal/hypertrophy.png";
+import ImproveShape from "@assets/goal/improve_shape.png";
+import LoseFat from "@assets/goal/lose_fat.png";
+import { useState } from "react";
 
 const selectOption = [
-  { label: "Masculino", value: "masculino" },
-  { label: "Feminino", value: "Feminino" },
-  { label: "Prefiro não informar", value: "Não informado" },
+  {
+    id: "1",
+    title: "Hipertrofia",
+    description: "Eu quero aprender a adicionar  músculo da maneira certa",
+    image: Hypertrophy,
+  },
+  {
+    id: "2",
+    title: "Melhorar a forma",
+    description:
+      "Tenho uma quantidade baixa de gordura corporal e preciso/quero construir mais músculos",
+    image: ImproveShape,
+  },
+  {
+    id: "3",
+    title: "Perder gordura",
+    description: "Eu quero largar toda essa gordura e ganhar massa muscular",
+    image: LoseFat,
+  },
 ];
 
 export function SelectGoal() {
+  const [isSelected, setIsSelected] = useState("");
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
   return (
@@ -26,94 +44,67 @@ export function SelectGoal() {
         barStyle={"dark-content"}
         translucent
       />
-      <ScrollView
-        contentContainerStyle={{ flexGrow: 1 }}
-        showsVerticalScrollIndicator={false}
-        backgroundColor="white"
-        padding={30}
+      <VStack
+        flex={1}
+        justifyContent="center"
+        alignItems="center"
+        borderStartColor={"$white"}
       >
         <VStack
-          flex={1}
-          bg={"$white"}
-          justifyContent="center"
           alignItems="center"
+          paddingLeft={"$7"}
+          paddingRight={"$7"}
+          w={"$full"}
         >
-          <VStack height={300} width={"$full"}>
-            <Image
-              source={CompleteUserInformationImg}
-              alt="Pessoas treinando"
-              role="img"
-              resizeMode="contain"
-              width={"$full"}
-              height={"$full"}
-            />
-          </VStack>
-
-          <VStack marginBottom={"$7"} alignItems="center">
-            <Text fontSize={"$xl"} fontWeight="bold" color="$black100">
-              Vamos completar seu perfil
-            </Text>
-            <Text fontSize={"$xs"} fontWeight="$normal" color="$black200">
-              Isso nos ajudará a saber mais sobre você!
-            </Text>
-          </VStack>
-
-          <Select
-            placeholder="Escolha seu sexo"
-            items={selectOption}
-            icon={Users}
-          />
-
-          <Input
-            placeholder="Data de aniversário"
-            icon={CalendarDays}
-            marginBottom={"$3.5"}
-            marginTop={"$3.5"}
-          />
-
-          <HStack
-            width={"$full"}
-            justifyContent="space-between"
-            marginBottom={"$3.5"}
+          <Text
+            fontSize={"$xl"}
+            fontWeight="$bold"
+            lineHeight={"$2xl"}
+            color="$black100"
           >
-            <Input placeholder="Seu peso" icon={Weight} width={"$5/6"} />
-            <VStack
-              bg="$black100"
-              height={58}
-              width={48}
-              borderRadius={14}
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Text color="$white" fontSize={"$xs"} fontWeight="$bold">
-                KG
-              </Text>
-            </VStack>
-          </HStack>
-
-          <HStack
-            width={"$full"}
-            justifyContent="space-between"
+            Qual é o seu objetivo?
+          </Text>
+          <Text
+            fontSize={"$md"}
+            fontWeight="$normal"
+            color="$black200"
+            textAlign="center"
             marginBottom={"$7"}
           >
-            <Input placeholder="Sua altura" icon={Ruler} width={"$5/6"} />
-            <VStack
-              bg="$black100"
-              height={58}
-              width={48}
-              borderRadius={14}
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Text color="$white" fontSize={"$xs"} fontWeight="$bold">
-                CM
-              </Text>
-            </VStack>
-          </HStack>
-
-          <Button title="Continuar" />
+            Isso nos ajudará a escolher o melhor programa para você
+          </Text>
         </VStack>
-      </ScrollView>
+
+        <ScrollView
+          horizontal
+          maxHeight={478}
+          showsHorizontalScrollIndicator={false}
+          margin={20}
+        >
+          {selectOption &&
+            selectOption.map((item) => {
+              return (
+                <CarouselCardWithImage
+                  key={item.id}
+                  title={item.title}
+                  description={item.description}
+                  image={item.image}
+                  isSelected={isSelected === item.id}
+                  onPress={() => {
+                    setIsSelected(item.id);
+                  }}
+                />
+              );
+            })}
+        </ScrollView>
+
+        <VStack paddingLeft={"$7"} paddingRight={"$7"} w={"$full"}>
+          <Button
+            title="Continuar"
+            disabled={isSelected.length === 0}
+          />
+        </VStack>
+      </VStack>
     </>
   );
 }
