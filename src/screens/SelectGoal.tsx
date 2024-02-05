@@ -102,6 +102,7 @@ export function SelectGoal() {
           <Button
             title="Continuar"
             disabled={isSelected.length === 0}
+            onPress={() => navigation.navigate("AddCoach")}
           />
         </VStack>
       </VStack>

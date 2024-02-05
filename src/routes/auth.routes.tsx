@@ -2,6 +2,7 @@ import {
   NativeStackNavigationProp,
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
+import { AddCoach } from "@screens/AddCoach";
 import { CompleteUserInformation } from "@screens/CompleteUserInformation";
 
 import { BurnCalories } from "@screens/onboarding/BurnCalories";
@@ -25,6 +26,7 @@ type AuthRoutes = {
   SelectUserType: undefined;
   CompleteUserInformation: undefined;
   SelectGoal: undefined
+  AddCoach: undefined;
 };
 
 export type AuthNavigatorRoutesProps = NativeStackNavigationProp<AuthRoutes>;
@@ -53,6 +55,7 @@ export function AuthRoutes() {
         name="SelectGoal"
         component={SelectGoal}
       />
+      <Screen name="AddCoach" component={AddCoach} />
     </Navigator>
   );
 }
