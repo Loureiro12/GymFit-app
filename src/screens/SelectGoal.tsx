@@ -48,7 +48,7 @@ export function SelectGoal() {
         flex={1}
         justifyContent="center"
         alignItems="center"
-        borderStartColor={"$white"}
+        backgroundColor={"$white"}
       >
         <VStack
           alignItems="center"

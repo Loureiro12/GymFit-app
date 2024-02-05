@@ -18,8 +18,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export function AddCoach() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
-  const handleButton = () => {
-    navigation.navigate("CompleteUserInformation");
+  const handleAdd = () => {
+    navigation.navigate("OnboardingSuccess");
   };
 
   return (
@@ -29,7 +29,7 @@ export function AddCoach() {
         barStyle={"dark-content"}
         translucent
       />
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#FFD600' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#FFD600" }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -53,7 +53,7 @@ export function AddCoach() {
                 marginBottom={"$5"}
                 textAlign="center"
               >
-                Adicione o código do seu treinador{" "}
+                Adicione o código do seu treinador
               </Text>
               <Input placeholder="Código" icon={Binary} />
 
@@ -62,9 +62,11 @@ export function AddCoach() {
                 variant="black"
                 marginBottom={"$5"}
                 marginTop={"$2.5"}
+                onPress={handleAdd}
               />
 
               <TouchableOpacity
+                onPress={handleAdd}
                 activeOpacity={0.8}
                 style={{
                   width: "100%",
