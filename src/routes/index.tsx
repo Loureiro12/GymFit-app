@@ -1,9 +1,9 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer } from '@react-navigation/native';
 
-import { AuthRoutes } from "./auth.routes";
-import { Box } from "@gluestack-ui/themed";
+import { Box } from '@gluestack-ui/themed';
+import { AuthRoutes } from './auth.routes';
 
-export function Routes() {
+function Routes() {
   return (
     <Box flex={1} bg="$white">
       <NavigationContainer>
@@ -12,3 +12,5 @@ export function Routes() {
     </Box>
   );
 }
+
+export default Routes;

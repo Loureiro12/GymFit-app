@@ -1,14 +1,6 @@
-import {
-  VStack,
-  Text,
-  Image,
-  Checkbox,
-  CheckboxIndicator,
-  CheckboxIcon,
-  CheckIcon,
-} from "@gluestack-ui/themed";
-import { useState } from "react";
-import { TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { VStack, Text, Image } from '@gluestack-ui/themed';
+
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
 type CarouselCardWithImageProps = TouchableOpacityProps & {
   title: string;
@@ -17,7 +9,7 @@ type CarouselCardWithImageProps = TouchableOpacityProps & {
   isSelected: boolean;
 };
 
-export function CarouselCardWithImage({
+function CarouselCardWithImage({
   title,
   description,
   image,
@@ -29,46 +21,37 @@ export function CarouselCardWithImage({
       {...rest}
       activeOpacity={0.7}
       style={{
-        backgroundColor: "#FFD600",
+        backgroundColor: '#FFD600',
         borderRadius: 24,
         padding: 28,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
         marginRight: 10,
         maxHeight: 478,
         width: 275,
         opacity: isSelected ? 0.3 : 1,
       }}
     >
-      <VStack width={"80%"} height={"70%"}>
+      <VStack width="80%" height="70%">
         {image && (
           <Image
             source={image}
             alt="Pessoa treinando"
             role="img"
             resizeMode="contain"
-            width={"$full"}
-            height={"$full"}
+            width="$full"
+            height="$full"
           />
         )}
       </VStack>
-      <Text
-        color="$white"
-        fontSize={"$lg"}
-        fontWeight="$semibold"
-        marginBottom={"$3"}
-        marginTop={"$5"}
-      >
+      <Text color="$white" fontSize="$lg" fontWeight="$semibold" marginBottom="$3" marginTop="$5">
         {title}
       </Text>
-      <Text
-        color="$white"
-        fontSize={"$md"}
-        fontWeight="$normal"
-        textAlign="center"
-      >
+      <Text color="$white" fontSize="$md" fontWeight="$normal" textAlign="center">
         {description}
       </Text>
     </TouchableOpacity>
   );
 }
+
+export default CarouselCardWithImage;

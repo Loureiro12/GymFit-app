@@ -1,4 +1,4 @@
-import { StatusBar, TouchableOpacity } from "react-native";
+import { StatusBar, TouchableOpacity } from 'react-native';
 import {
   Heading,
   Text,
@@ -15,25 +15,22 @@ import {
   CheckboxIcon,
   CheckIcon,
   useToast,
-  Toast,
-  ToastTitle,
-  ToastDescription,
-} from "@gluestack-ui/themed";
-import { User } from "lucide-react-native";
-import { useNavigation } from "@react-navigation/native";
+} from '@gluestack-ui/themed';
+import { User } from 'lucide-react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
-import Facebook from "@assets/svgs/facebook.svg";
-import Google from "@assets/svgs/google.svg";
+import Facebook from '@assets/svgs/facebook.svg';
+import Google from '@assets/svgs/google.svg';
 
-import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
-import { Button } from "@components/Button";
-import { Input } from "@components/Input";
-import { useState } from "react";
-import { AlertToast } from "@components/AlertToast";
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
+import { Button } from '@components/Button';
+import { Input } from '@components/Input';
+import { useState } from 'react';
+import { AlertToast } from '@components/AlertToast';
 
 type FormDataProps = {
   fist_name: string;
@@ -43,19 +40,13 @@ type FormDataProps = {
 };
 
 const signUpSchema = yup.object({
-  fist_name: yup
-    .string()
-    .required("Informe o primeiro nome")
-    .min(3, "Nome muito curto"),
-  last_name: yup
-    .string()
-    .required("Informe o Sobrenome")
-    .min(3, "Sobrenome muito curto"),
-  email: yup.string().email("E-mail inválido").required("Informe o e-mail"),
-  password: yup.string().required("Informe a senha"),
+  fist_name: yup.string().required('Informe o primeiro nome').min(3, 'Nome muito curto'),
+  last_name: yup.string().required('Informe o Sobrenome').min(3, 'Sobrenome muito curto'),
+  email: yup.string().email('E-mail inválido').required('Informe o e-mail'),
+  password: yup.string().required('Informe a senha'),
 });
 
-export function SignUp() {
+function SignUp() {
   const toast = useToast();
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
@@ -72,7 +63,7 @@ export function SignUp() {
   const handleSignUp = (data: FormDataProps) => {
     if (!acceptedTerm) {
       toast.show({
-        placement: "top",
+        placement: 'top',
         render: () => {
           return (
             <AlertToast
@@ -86,32 +77,25 @@ export function SignUp() {
       return;
     }
 
-    navigation.navigate("SelectUserType");
+    console.log(data);
+
+    navigation.navigate('SelectUserType');
   };
 
   return (
     <>
-      <StatusBar
-        backgroundColor="white"
-        barStyle={"dark-content"}
-        translucent
-      />
+      <StatusBar backgroundColor="white" barStyle="dark-content" translucent />
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
         backgroundColor="white"
       >
-        <VStack
-          flex={1}
-          bg={"$white"}
-          justifyContent="space-around"
-          padding={30}
-        >
+        <VStack flex={1} bg="$white" justifyContent="space-around" padding={30}>
           <VStack alignItems="center">
-            <Text fontSize={"$md"} fontWeight="$normal">
+            <Text fontSize="$md" fontWeight="$normal">
               Olá,
             </Text>
-            <Heading fontSize={"$xl"} fontWeight="$bold" marginBottom={46}>
+            <Heading fontSize="$xl" fontWeight="$bold" marginBottom={46}>
               Crie sua conta!
             </Heading>
             <Controller
@@ -193,7 +177,7 @@ export function SignUp() {
                 <CheckboxIndicator mr={10}>
                   <CheckboxIcon as={CheckIcon} />
                 </CheckboxIndicator>
-                <CheckboxLabel fontSize={"$xs"} textAlign="justify">
+                <CheckboxLabel fontSize="$xs" textAlign="justify">
                   Aceitar a Política de Privacidade e Termos de Uso.
                 </CheckboxLabel>
               </Checkbox>
@@ -204,23 +188,23 @@ export function SignUp() {
             <Button title="Cadastrar" onPress={handleSubmit(handleSignUp)} />
 
             <HStack alignItems="center" marginBottom={30} marginTop={30}>
-              <Box width={"40%"} height={1} bgColor="#DDDADA" />
+              <Box width="40%" height={1} bgColor="#DDDADA" />
               <Text marginLeft={10} marginRight={10}>
                 ou
               </Text>
-              <Box width={"40%"} height={1} bgColor="#DDDADA" />
+              <Box width="40%" height={1} bgColor="#DDDADA" />
             </HStack>
 
             <HStack marginBottom={30}>
               <TouchableOpacity
                 activeOpacity={0.8}
                 style={{
-                  alignItems: "center",
+                  alignItems: 'center',
                   height: 50,
                   width: 50,
                   borderWidth: 1,
-                  borderColor: "#DDDADA",
-                  justifyContent: "center",
+                  borderColor: '#DDDADA',
+                  justifyContent: 'center',
                   borderRadius: 8,
                   marginRight: 30,
                 }}
@@ -231,12 +215,12 @@ export function SignUp() {
               <TouchableOpacity
                 activeOpacity={0.8}
                 style={{
-                  alignItems: "center",
+                  alignItems: 'center',
                   height: 50,
                   width: 50,
                   borderWidth: 1,
-                  borderColor: "#DDDADA",
-                  justifyContent: "center",
+                  borderColor: '#DDDADA',
+                  justifyContent: 'center',
                   borderRadius: 8,
                 }}
               >
@@ -246,9 +230,9 @@ export function SignUp() {
 
             <ButtonText
               fontWeight="$normal"
-              fontSize={"$sm"}
+              fontSize="$sm"
               color="$black100"
-              onPress={() => navigation.navigate("SignIn")}
+              onPress={() => navigation.navigate('SignIn')}
             >
               já tem uma conta? Conecte-se
             </ButtonText>
@@ -258,3 +242,5 @@ export function SignUp() {
     </>
   );
 }
+
+export default SignUp;

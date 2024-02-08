@@ -1,4 +1,3 @@
-const ONBOARDING_COMPLETED = "@gymFit:onboarding-completed";
+const ONBOARDING_COMPLETED = '@gymFit:onboarding-completed';
 
-
-export { ONBOARDING_COMPLETED };
+export default ONBOARDING_COMPLETED;

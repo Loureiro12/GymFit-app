@@ -1,88 +1,64 @@
-import { FlatList, StatusBar } from "react-native";
-import { VStack, Text, ScrollView } from "@gluestack-ui/themed";
-import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from 'react-native';
+import { VStack, Text, ScrollView } from '@gluestack-ui/themed';
+import { useNavigation } from '@react-navigation/native';
 
-import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
-import { Button } from "@components/Button";
-import { CarouselCardWithImage } from "@components/CarouselCardWithImage";
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
+import { Button } from '@components/Button';
+import { CarouselCardWithImage } from '@components/CarouselCardWithImage';
 
-import Hypertrophy from "@assets/goal/hypertrophy.png";
-import ImproveShape from "@assets/goal/improve_shape.png";
-import LoseFat from "@assets/goal/lose_fat.png";
-import { useState } from "react";
+import Hypertrophy from '@assets/goal/hypertrophy.png';
+import ImproveShape from '@assets/goal/improve_shape.png';
+import LoseFat from '@assets/goal/lose_fat.png';
+import { useState } from 'react';
 
 const selectOption = [
   {
-    id: "1",
-    title: "Hipertrofia",
-    description: "Eu quero aprender a adicionar  músculo da maneira certa",
+    id: '1',
+    title: 'Hipertrofia',
+    description: 'Eu quero aprender a adicionar  músculo da maneira certa',
     image: Hypertrophy,
   },
   {
-    id: "2",
-    title: "Melhorar a forma",
+    id: '2',
+    title: 'Melhorar a forma',
     description:
-      "Tenho uma quantidade baixa de gordura corporal e preciso/quero construir mais músculos",
+      'Tenho uma quantidade baixa de gordura corporal e preciso/quero construir mais músculos',
     image: ImproveShape,
   },
   {
-    id: "3",
-    title: "Perder gordura",
-    description: "Eu quero largar toda essa gordura e ganhar massa muscular",
+    id: '3',
+    title: 'Perder gordura',
+    description: 'Eu quero largar toda essa gordura e ganhar massa muscular',
     image: LoseFat,
   },
 ];
 
-export function SelectGoal() {
-  const [isSelected, setIsSelected] = useState("");
+function SelectGoal() {
+  const [isSelected, setIsSelected] = useState('');
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
   return (
     <>
-      <StatusBar
-        backgroundColor="white"
-        barStyle={"dark-content"}
-        translucent
-      />
-      <VStack
-        flex={1}
-        justifyContent="center"
-        alignItems="center"
-        backgroundColor={"$white"}
-      >
-        <VStack
-          alignItems="center"
-          paddingLeft={"$7"}
-          paddingRight={"$7"}
-          w={"$full"}
-        >
-          <Text
-            fontSize={"$xl"}
-            fontWeight="$bold"
-            lineHeight={"$2xl"}
-            color="$black100"
-          >
+      <StatusBar backgroundColor="white" barStyle="dark-content" translucent />
+      <VStack flex={1} justifyContent="center" alignItems="center" backgroundColor="$white">
+        <VStack alignItems="center" paddingLeft="$7" paddingRight="$7" w="$full">
+          <Text fontSize="$xl" fontWeight="$bold" lineHeight="$2xl" color="$black100">
             Qual é o seu objetivo?
           </Text>
           <Text
-            fontSize={"$md"}
+            fontSize="$md"
             fontWeight="$normal"
             color="$black200"
             textAlign="center"
-            marginBottom={"$7"}
+            marginBottom="$7"
           >
             Isso nos ajudará a escolher o melhor programa para você
           </Text>
         </VStack>
 
-        <ScrollView
-          horizontal
-          maxHeight={478}
-          showsHorizontalScrollIndicator={false}
-          margin={20}
-        >
+        <ScrollView horizontal maxHeight={478} showsHorizontalScrollIndicator={false} margin={20}>
           {selectOption &&
-            selectOption.map((item) => {
+            selectOption.map(item => {
               return (
                 <CarouselCardWithImage
                   key={item.id}
@@ -98,14 +74,16 @@ export function SelectGoal() {
             })}
         </ScrollView>
 
-        <VStack paddingLeft={"$7"} paddingRight={"$7"} w={"$full"}>
+        <VStack paddingLeft="$7" paddingRight="$7" w="$full">
           <Button
             title="Continuar"
             disabled={isSelected.length === 0}
-            onPress={() => navigation.navigate("AddCoach")}
+            onPress={() => navigation.navigate('AddCoach')}
           />
         </VStack>
       </VStack>
     </>
   );
 }
+
+export default SelectGoal;

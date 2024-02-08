@@ -1,32 +1,24 @@
-import { StatusBar, TouchableOpacity } from "react-native";
-import { Heading, Text, VStack, Image, ScrollView } from "@gluestack-ui/themed";
+import { StatusBar, TouchableOpacity } from 'react-native';
+import { Heading, Text, VStack, Image, ScrollView } from '@gluestack-ui/themed';
 
-import BackgroundImg from "@assets/onboarding/Frame.png";
+import BackgroundImg from '@assets/onboarding/Frame.png';
 
-import { ProgressButton } from "@components/ProgressButton";
-import { useNavigation } from "@react-navigation/native";
-import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
-import { Button } from "@components/Button";
+import { ProgressButton } from '@components/ProgressButton';
+import { useNavigation } from '@react-navigation/native';
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
 
-export function TrackYourGoal() {
+function TrackYourGoal() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
   function handleNext() {
-    navigation.navigate("BurnCalories");
+    navigation.navigate('BurnCalories');
   }
 
   return (
     <>
-      <StatusBar
-        backgroundColor="#FFD600"
-        barStyle={"dark-content"}
-        translucent
-      />
-      <ScrollView
-        contentContainerStyle={{ flexGrow: 1 }}
-        showsVerticalScrollIndicator={false}
-      >
-        <VStack flex={1} bg={"$white"} justifyContent="space-between">
+      <StatusBar backgroundColor="#FFD600" barStyle="dark-content" translucent />
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+        <VStack flex={1} bg="$white" justifyContent="space-between">
           <VStack maxHeight={450}>
             <Image
               source={BackgroundImg}
@@ -34,8 +26,8 @@ export function TrackYourGoal() {
               role="img"
               resizeMode="cover"
               position="relative"
-              width={"$full"}
-              height={"$full"}
+              width="$full"
+              height="$full"
             />
           </VStack>
           <VStack
@@ -45,13 +37,12 @@ export function TrackYourGoal() {
             justifyContent="center"
             alignContent="space-between"
           >
-            <Heading fontSize={"$2xl"} color="$black100">
+            <Heading fontSize="$2xl" color="$black100">
               Acompanhe seu objetivo
             </Heading>
-            <Text fontSize={"$sm"} mt={10} color="$black200" lineHeight={"$md"}>
-              Não se preocupe se você tiver problemas para determinar seus
-              objetivos, podemos ajudá-lo a determinar seus objetivos e
-              acompanhar seus objetivos
+            <Text fontSize="$sm" mt={10} color="$black200" lineHeight="$md">
+              Não se preocupe se você tiver problemas para determinar seus objetivos, podemos
+              ajudá-lo a determinar seus objetivos e acompanhar seus objetivos
             </Text>
             <VStack
               alignItems="flex-end"
@@ -59,13 +50,10 @@ export function TrackYourGoal() {
               justifyContent="space-between"
               marginBottom={40}
             >
-              <TouchableOpacity
-                activeOpacity={0.8}
-                onPress={() => navigation.navigate('SignIn')}
-              >
+              <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('SignIn')}>
                 <Text color="$warmGray400">Pular</Text>
               </TouchableOpacity>
-              <ProgressButton onPress={handleNext} />
+              <ProgressButton onPress={() => handleNext()} />
             </VStack>
           </VStack>
 
@@ -75,3 +63,5 @@ export function TrackYourGoal() {
     </>
   );
 }
+
+export default TrackYourGoal;

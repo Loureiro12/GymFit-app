@@ -1,5 +1,4 @@
-import { config } from "./config/gluestack-ui.config";
-import { Box, GluestackUIProvider } from "@gluestack-ui/themed";
+import { Box, GluestackUIProvider } from '@gluestack-ui/themed';
 
 import {
   useFonts,
@@ -7,9 +6,10 @@ import {
   Poppins_500Medium,
   Poppins_600SemiBold,
   Poppins_700Bold,
-} from "@expo-google-fonts/poppins";
+} from '@expo-google-fonts/poppins';
 
-import { Routes } from "@routes/index";
+import Routes from '@routes/index';
+import { config } from './config/gluestack-ui.config';
 
 export default function App() {
   const [fontsLoaded] = useFonts({

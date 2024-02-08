@@ -1,11 +1,10 @@
-
-import { Icon, Button, ChevronRightIcon } from "@gluestack-ui/themed";
+import { Icon, Button, ChevronRightIcon } from '@gluestack-ui/themed';
 
 type Props = {
- onPress: () => void
-}
+  onPress: () => void;
+};
 
-export function ProgressButton({ onPress }: Props) {
+function ProgressButton({ onPress }: Props) {
   return (
     <Button
       w={60}
@@ -15,9 +14,11 @@ export function ProgressButton({ onPress }: Props) {
       alignItems="center"
       borderRadius={50}
       backgroundColor="$yellow10"
-     onPress={onPress}
+      onPress={onPress}
     >
       <Icon as={ChevronRightIcon} color="$white" size="xl" />
     </Button>
   );
 }
+
+export default ProgressButton;
