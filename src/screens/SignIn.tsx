@@ -1,7 +1,7 @@
+import { useEffect } from "react";
 import {
   Keyboard,
   KeyboardAvoidingView,
-  SafeAreaView,
   StatusBar,
   Platform,
   TouchableOpacity,
@@ -19,22 +19,43 @@ import {
   Box,
 } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useForm, Controller } from "react-hook-form";
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
 import Facebook from "@assets/svgs/facebook.svg";
 import Google from "@assets/svgs/google.svg";
 
 import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
+
+import { ONBOARDING_COMPLETED } from "@storage/storageConfig";
+
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
-import { useEffect } from "react";
-import { ONBOARDING_COMPLETED } from "@storage/storageConfig";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+
+type FormDataProps = {
+  email: string;
+  password: string;
+};
+
+const signUpSchema = yup.object({
+  email: yup.string().email('E-mail inválido').required('Informe o e-mail'),
+  password: yup.string().required('Informe a senha')
+});
 
 export function SignIn() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
+  const { control, handleSubmit, formState: {errors} } = useForm<FormDataProps>({
+    resolver: yupResolver(signUpSchema),
+  });
 
   const onboardingCompleted = async () => {
-    await AsyncStorage.setItem(ONBOARDING_COMPLETED, 'true');
+    await AsyncStorage.setItem(ONBOARDING_COMPLETED, "true");
+  };
+
+  const handleSignUp = async (data: FormDataProps) => {
+    console.log("Login", data);
   };
 
   useEffect(() => {
@@ -50,8 +71,8 @@ export function SignIn() {
       />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView
-          behavior={"position"}
-          keyboardVerticalOffset={Platform.OS === "ios" ? 40 : undefined}
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
+          keyboardVerticalOffset={Platform.OS === "ios" ? 0 : undefined}
           enabled
           style={{
             flex: 1,
@@ -65,7 +86,7 @@ export function SignIn() {
             backgroundColor="white"
           >
             <VStack
-              // flex={1}
+              flex={1}
               bg={"$white"}
               justifyContent="space-around"
               padding={30}
@@ -77,21 +98,51 @@ export function SignIn() {
                 <Heading fontSize={"$xl"} fontWeight="$bold" marginBottom={46}>
                   Bem-vindo!
                 </Heading>
-                <Input placeholder="Email" icon={MailIcon} mb={15} />
-                <Input placeholder="Senha" icon={LockIcon} />
+                <Controller
+                  control={control}
+                  render={({ field: { onChange } }) => (
+                    <Input
+                      placeholder="Email"
+                      icon={MailIcon}
+                      mb={15}
+                      onChangeText={onChange}
+                      error={!!errors.email}
+                      errorMensagem={errors.email?.message}
+                      keyboardType="email-address"
+                      autoCorrect={false}
+                      autoCapitalize="none"
+                    />
+                  )}
+                  name="email"
+                />
+
+                <Controller
+                  control={control}
+                  render={({ field: { onChange } }) => (
+                    <Input
+                      placeholder="Senha"
+                      icon={LockIcon}
+                      onChangeText={onChange}
+                      error={!!errors.password}
+                      errorMensagem={errors.password?.message}
+                    />
+                  )}
+                  name="password"
+                />
 
                 <ButtonText
-                  marginTop={10}
+                  marginTop={"$2.5"}
                   color="#ADA4A5"
                   fontSize={"$sm"}
                   textDecorationLine="underline"
+                  marginBottom={"$4"}
                 >
                   Esqueceu sua senha?
                 </ButtonText>
               </VStack>
 
               <VStack alignItems="center">
-                <Button title="Entrar" />
+                <Button title="Entrar" onPress={handleSubmit(handleSignUp)} />
 
                 <HStack alignItems="center" marginBottom={30} marginTop={30}>
                   <Box width={"40%"} height={1} bgColor="#DDDADA" />

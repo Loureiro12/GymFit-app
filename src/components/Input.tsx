@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import { TextInputProps } from "react-native";
 
 import {
   FormControl,
@@ -9,7 +9,7 @@ import {
   FormControlError,
 } from "@gluestack-ui/themed";
 
-export interface Props extends ComponentProps<typeof NativeBaseInput> {
+export type Props = TextInputProps & {
   errorMensagem?: string | null;
   error?: boolean;
   placeholder: string;
@@ -49,6 +49,7 @@ export function Input({
           placeholder={placeholder}
           color="#ADA4A5"
           fontSize={"$md"}
+          {...rest}
         />
       </NativeBaseInput>
       <FormControlError>
