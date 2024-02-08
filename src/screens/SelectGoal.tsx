@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
 import { Button } from '@components/Button';
-import { CarouselCardWithImage } from '@components/CarouselCardWithImage';
+import CarouselCardWithImage from '@components/CarouselCardWithImage';
 
 import Hypertrophy from '@assets/goal/hypertrophy.png';
 import ImproveShape from '@assets/goal/improve_shape.png';

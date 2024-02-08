@@ -2,19 +2,19 @@ import {
   NativeStackNavigationProp,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import { AddCoach } from '@screens/AddCoach';
-import { CompleteUserInformation } from '@screens/CompleteUserInformation';
+import AddCoach from '@screens/AddCoach';
+import CompleteUserInformation from '@screens/CompleteUserInformation';
 
-import { BurnCalories } from '@screens/onboarding/BurnCalories';
-import { EatWell } from '@screens/onboarding/EatWell';
-import { InitialOnboarding } from '@screens/onboarding/InitialOnboarding';
-import { LetImproveSleep } from '@screens/onboarding/LetImproveSleep';
-import { TrackYourGoal } from '@screens/onboarding/TrackYourGoal';
-import { OnboardingSuccess } from '@screens/OnboardingSuccess';
-import { SelectGoal } from '@screens/SelectGoal';
-import { SelectUserType } from '@screens/SelectUserType';
-import { SignIn } from '@screens/SignIn';
-import { SignUp } from '@screens/SignUp';
+import BurnCalories from '@screens/onboarding/BurnCalories';
+import EatWell from '@screens/onboarding/EatWell';
+import InitialOnboarding from '@screens/onboarding/InitialOnboarding';
+import LetImproveSleep from '@screens/onboarding/LetImproveSleep';
+import TrackYourGoal from '@screens/onboarding/TrackYourGoal';
+import OnboardingSuccess from '@screens/OnboardingSuccess';
+import SelectGoal from '@screens/SelectGoal';
+import SelectUserType from '@screens/SelectUserType';
+import SignIn from '@screens/SignIn';
+import SignUp from '@screens/SignUp';
 
 type AuthRoutes = {
   InitialOnboarding: undefined;

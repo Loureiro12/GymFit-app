@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import CompleteUserInformationImg from '@assets/CompleteUserInformationImg.png';
 
 import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
-import { Select } from '@components/Select';
+import Select from '@components/Select';
 import { Input } from '@components/Input';
 import { CalendarDays, Ruler, Users, Weight } from 'lucide-react-native';
 import { Button } from '@components/Button';
@@ -55,12 +55,11 @@ function CompleteUserInformation() {
 
           <Select placeholder="Escolha seu sexo" items={selectOption} icon={Users} />
 
-          <Input
-            placeholder="Data de aniversário"
-            icon={CalendarDays}
-            // marginBottom="$3.5"
-            // marginTop="$3.5"
-          />
+          <VStack marginBottom="$3.5" />
+
+          <Input placeholder="Data de aniversário" icon={CalendarDays} />
+
+          <VStack marginBottom="$3.5" />
 
           <HStack width="$full" justifyContent="space-between" marginBottom="$3.5">
             <Input placeholder="Seu peso" icon={Weight} width="$5/6" />

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { StatusBar, TouchableOpacity } from 'react-native';
 import {
   Heading,
@@ -27,10 +29,10 @@ import Facebook from '@assets/svgs/facebook.svg';
 import Google from '@assets/svgs/google.svg';
 
 import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
+
 import { Button } from '@components/Button';
 import { Input } from '@components/Input';
-import { useState } from 'react';
-import { AlertToast } from '@components/AlertToast';
+import AlertToast from '@components/AlertToast';
 
 type FormDataProps = {
   fist_name: string;
@@ -69,7 +71,7 @@ function SignUp() {
             <AlertToast
               title="Aceite os termos para continuar!"
               description="Aceite os termos de uso e política de privacidade para continuar."
-              action="success"
+              action="error"
             />
           );
         },
