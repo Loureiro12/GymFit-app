@@ -14,6 +14,10 @@ import {
   CheckboxIndicator,
   CheckboxIcon,
   CheckIcon,
+  useToast,
+  Toast,
+  ToastTitle,
+  ToastDescription,
 } from "@gluestack-ui/themed";
 import { User } from "lucide-react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -29,6 +33,7 @@ import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 import { useState } from "react";
+import { AlertToast } from "@components/AlertToast";
 
 type FormDataProps = {
   fist_name: string;
@@ -51,6 +56,7 @@ const signUpSchema = yup.object({
 });
 
 export function SignUp() {
+  const toast = useToast();
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
   const [acceptedTerm, setAcceptedTerm] = useState(false);
@@ -64,15 +70,23 @@ export function SignUp() {
   });
 
   const handleSignUp = (data: FormDataProps) => {
-
     if (!acceptedTerm) {
-      console.log("precisa aceitar os termos de uso e política de privacidade");
-      return
+      toast.show({
+        placement: "top",
+        render: () => {
+          return (
+            <AlertToast
+              title="Aceite os termos para continuar!"
+              description="Aceite os termos de uso e política de privacidade para continuar."
+              action="success"
+            />
+          );
+        },
+      });
+      return;
     }
 
-    console.log("data", data);
-
-    // navigation.navigate("SelectUserType");
+    navigation.navigate("SelectUserType");
   };
 
   return (
