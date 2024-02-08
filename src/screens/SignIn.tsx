@@ -21,7 +21,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useForm, Controller } from "react-hook-form";
-import {yupResolver} from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import Facebook from "@assets/svgs/facebook.svg";
@@ -39,15 +39,19 @@ type FormDataProps = {
   password: string;
 };
 
-const signUpSchema = yup.object({
-  email: yup.string().email('E-mail inválido').required('Informe o e-mail'),
-  password: yup.string().required('Informe a senha')
+const signInSchema = yup.object({
+  email: yup.string().email("E-mail inválido").required("Informe o e-mail"),
+  password: yup.string().required("Informe a senha"),
 });
 
 export function SignIn() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
-  const { control, handleSubmit, formState: {errors} } = useForm<FormDataProps>({
-    resolver: yupResolver(signUpSchema),
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormDataProps>({
+    resolver: yupResolver(signInSchema),
   });
 
   const onboardingCompleted = async () => {
@@ -125,6 +129,9 @@ export function SignIn() {
                       onChangeText={onChange}
                       error={!!errors.password}
                       errorMensagem={errors.password?.message}
+                      secureTextEntry
+                      autoCapitalize="none"
+                      autoCorrect={false}
                     />
                   )}
                   name="password"
